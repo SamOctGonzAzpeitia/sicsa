@@ -20,3 +20,11 @@ Route::get('', function () {
 Route::get('/services', function () {
     return view('servicios');
 })->name('services') ;
+
+Route::get('/sistemas', function () {
+    return view('sistemas');
+})->name('sistemas') ;
+
+Route::get('/contact', function () {
+    return view('contacto');
+})->name('contact') ;

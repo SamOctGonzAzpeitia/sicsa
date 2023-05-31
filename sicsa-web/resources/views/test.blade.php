@@ -24,16 +24,16 @@
       <div class="navbar-collapse collapse" id="navbarCollapse" style="">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item px-2 mr-auto">
-                    <a class="nav-link h5" href="">Inicio</a>
+                    <a class="nav-link h5" href="{{route('home')}}">Inicio</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link h5"  href="">Servicios</a>
+                    <a class="nav-link h5"  href="{{route('services')}}">Servicios</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link h5" href="">Sistemas</a>
+                    <a class="nav-link h5" href="{{route('sistemas')}}">Sistemas</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link h5" href="">Contacto</a>
+                    <a class="nav-link h5" href="{{route('contact')}}">Contacto</a>
                 </li>
                 <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" style="color:black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
