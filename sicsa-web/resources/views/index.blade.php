@@ -1,5 +1,9 @@
 @extends('Plantillas/test')
 
+@section('titulo')
+    SICSA
+@endsection
+
 @section('seccion')
 
 

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/76fa277871.js" crossorigin="anonymous"></script>
     
-    <title> Sicsa</title>
+    <title> @yield('title')</title>
   </head>
   <body>
     
@@ -27,7 +27,7 @@
                     <a class="nav-link h5" href="{{route('home')}}">Inicio</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link h5"  href="{{route('services')}}">Servicios</a>
+                    <a class="nav-link h5"  href="{{route('servicios')}}">Servicios</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link h5" href="{{route('sistemas')}}">Sistemas</a>

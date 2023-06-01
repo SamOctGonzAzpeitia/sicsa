@@ -1,5 +1,7 @@
 @extends('Plantillas/test')
-
+@section('titulo')
+    Servicios
+@endsection
 @section('seccion')
 
 

@@ -1,5 +1,7 @@
 @extends('Plantillas/test')
-
+@section('titulo')
+    Sistemas
+@endsection
 @section('seccion')
 
 <div class="container" id="Sistemas">

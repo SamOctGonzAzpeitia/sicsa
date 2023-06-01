@@ -1,7 +1,8 @@
 @extends('Plantillas/test')
-
+@section('titulo')
+    Contacto
+@endsection
 @section('seccion')
-
 
 <div class="container"  id="Contacto">
     

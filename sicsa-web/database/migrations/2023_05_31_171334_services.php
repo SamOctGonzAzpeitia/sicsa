@@ -21,6 +21,8 @@ class Services extends Migration
             $table->string('client');
             $table->string('status');
             $table->string('notas');
+            $table->string('fecha_inicio')->nullable();
+            $table->string('fecha_fin')->nullable();
             $table->timestamps();
         });
     }
