@@ -16,20 +16,21 @@
 
     <nav class="navbar navbar-expand-md navbar-light bg-light mb-5">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <img  src="{{URL::asset('img/logo.png')}}" width="150" height="90">
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link active" href="{{route('inicio-sicsa')}}">Inicio</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Usuarios</a>
+            <a class="nav-link" href="{{route('users')}}">Usuarios</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Ordenes de Servicio</a>
+            <a class="nav-link" href="{{route('services')}}">Ordenes de Servicio</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#">Clientes</a>
@@ -39,9 +40,19 @@
         </div>
     </div>
     </nav>
+    <div id="mainContainer">
+        @if (session('error'))
+            <div class="alert alert-primary" role="alert" :message="session('error')">
+        @endif
+        @if (session('success'))
+            <div class="alert alert-primary" role="alert" :message="session('success')">
+        @endif
 
+        <h1 class="uk-heading-divider">@yield('title')</h1>
+        @yield('main')
+    </div>
 
-    <div class="container mt-5">
+    <div class="container">
         @yield('seccion')
     </div>
 

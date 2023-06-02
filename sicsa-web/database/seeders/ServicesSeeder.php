@@ -19,8 +19,9 @@ class ServicesSeeder extends Seeder
             'name' => 'Servicio 1',
             'description' => 'Servicio 1',
             'client' => 'Cliente 1',
-            'status' => 'Activo',
+            'status_id' => '1',
             'notas' => 'Notas 1',
+            'costo' => '1000',
             'fecha_inicio' => '2021-05-31',
             'fecha_fin' => '2021-06-30',
             
@@ -30,8 +31,9 @@ class ServicesSeeder extends Seeder
             'name' => 'Servicio 2',
             'description' => 'Servicio 2',
             'client' => 'Cliente 2',
-            'status' => 'Activo',
+            'status_id' => '1',
             'notas' => 'Notas 2',
+            'costo' => '2000',
             'fecha_inicio' => '2021-05-31',
             'fecha_fin' => '2021-06-30',
         ]);

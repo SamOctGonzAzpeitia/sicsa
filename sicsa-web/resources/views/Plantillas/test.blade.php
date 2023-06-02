@@ -35,15 +35,13 @@
                 <li class="nav-item px-2">
                     <a class="nav-link h5" href="{{route('contact')}}">Contacto</a>
                 </li>
-                <!-- <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" style="color:black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-circle"></i>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" hidden>
-                        <li><a class="dropdown-item" href="">Iniciar Sesión</a></li>
-                        
-                        
-                    </ul> -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                        <li><a class="dropdown-item" href="{{route('login')}}">Iniciar Sesión</a></li>
+                    </ul>
                 </li>
         </ul>
       </div>

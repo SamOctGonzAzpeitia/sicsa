@@ -41,9 +41,46 @@ Route::get('/register', function () {
     return view('register');
 })->name('register') ;
 
-Route::get('/services', [ServicesController::class, 'index'])->name('services') ;
-Route::get('/services/create', [ServicesController::class, 'create'])->name('services.create') ;
+//Rutas de inicio a portal
+Route::get('/home', function () {
+    return view('home');
+})->name('inicio-sicsa') ;
 
-Route::get('/users', [UserController::class, 'index'])->name('users') ;
+//Rutas de servicios
 
-Route::get('/roles', [RoleController::class, 'index'])->name('roles') ;
+Route::get('/services/index', [ServicesController::class, 'index'])
+    ->name('services') ;
+Route::get('/services/create', [ServicesController::class, 'create'])
+    ->name('services.create') ;
+Route::post('/services/register', [ServicesController::class, 'store'])
+    ->name('services.store') ;
+Route::get('/services/show/{id}', [ServicesController::class, 'show'])
+    ->name('services.show') ;
+Route::get('/services/edit/{id}', [ServicesController::class, 'edit'])
+    ->name('services.edit') ;
+Route::post('/services/update/{id}', [ServicesController::class, 'update'])
+    ->name('services.update') ;
+Route::post('/services/delete/{id}', [ServicesController::class, 'destroy'])
+    ->name('services.destroy') ;
+
+//Rutas de usuarios
+
+Route::get('/users', [UserController::class, 'index'])
+    ->name('users') ;
+Route::get('/users/create', [UserController::class, 'create'])
+    ->name('users.create') ;
+Route::post('/users/register', [UserController::class, 'store'])
+    ->name('users.store') ;
+Route::get('/users/show/{id}', [UserController::class, 'show'])
+    ->name('users.show') ;
+Route::get('/users/edit/{id}', [UserController::class, 'edit'])
+    ->name('users.edit') ;
+Route::post('/users/update/{id}', [UserController::class, 'update'])
+    ->name('users.update') ;
+Route::post('/users/delete/{id}', [UserController::class, 'destroy'])
+    ->name('users.destroy') ;
+
+
+//Rutas de roles
+Route::get('/roles', [RoleController::class, 'index'])
+    ->name('roles') ;

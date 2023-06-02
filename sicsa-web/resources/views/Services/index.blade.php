@@ -27,7 +27,8 @@
                 <input type="date" class="form-control">
             </div>
             <div class="col">
-                <a href="" class="btn btn-outline-primary">Agregar Servicio</a>
+                
+                <a href="{{route('services.create')}}" class="btn btn-outline-primary mt-4">Agregar Servicio</a>
             </div>
         </div>
         
@@ -52,11 +53,34 @@
                 @foreach ($services as $service)
                 <tr>
                     <th scope="row">{{$service['id']}}</th>
-                        <td>{{$service['name']}}</td>
-                        <td>{{$service['description']}}</td>
-                        <td>{{$service['client']}}</td>
-                        <td>{{$service['status']}}</td>
-                        <td>{{$service['fecha_inicio']}}</td>
+                        <td>
+                            <a style="text-decoration:none" class="link-dark link-offset-2 link-underline link-underline-opacity-0" href="{{ url('/services/show/'.$service['id']) }}">
+                            {{$service['name']}}
+                            </a>
+                        </td>
+                        <td>
+                            <a style="text-decoration:none" class="link-dark link-offset-2 " href="{{ url('/services/show/'.$service['id']) }}">
+                            {{$service['description']}}
+                            </a>
+                            </td>
+                        <td>
+                            <a style="text-decoration:none" class="link-dark link-offset-2" href="{{ url('/services/show/'.$service['id']) }}">
+                            {{$service['client']}}
+                            </a>
+                        </td>
+                        <td>
+                            <a style="text-decoration:none" class="link-dark link-offset-2 " href="{{ url('/services/show/'.$service['id']) }}">
+                            @if ($service['status_id'] == 1)
+                                <span class="badge bg-success">Activo</span>
+                            @elseif ($service['status_id'] == 2)
+                                <span class="badge bg-danger">Inactivo</span>
+                            @endif
+                            </a>
+                        </td>
+                        <td>
+                            <a style="text-decoration:none" class="link-dark link-offset-2 link-underline-opacity-0 " href="{{ url('/services/show/'.$service['id']) }}">
+                            {{$service['fecha_inicio']}}
+                        </td>
                         
                 </tr>
                 @endforeach
