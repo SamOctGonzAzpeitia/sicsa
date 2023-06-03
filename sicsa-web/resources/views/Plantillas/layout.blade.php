@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-            <a class="nav-link active" href="{{route('inicio-sicsa')}}">Inicio</a>
+            <a class="nav-link active" href="{{route('home')}}">Inicio</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="{{route('users')}}">Usuarios</a>

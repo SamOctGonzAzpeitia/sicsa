@@ -18,20 +18,28 @@
     <div class="container position relative mt-5" >
         <div class="card rounded mx-auto d-block border-dark " style="width: 35rem;">
             <img src="img/logo.png" class="card-img-top-center rounded mx-auto d-block img-thumbnail mt-1"   alt="..." width="300" height="200">
-            <form class="m5 position-relative py-2 px-4">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Correo </label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 28rem;">
+                  
+            <form action="{{route('login')}}" method="POST">
+                @csrf
+                <div class="row m-3">
+                <label for="email" class="form-label">Correo</label>
                 
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" style="width: 28rem;">
-            </div>
-            
-            <button type="submit" class="btn btn-primary mb-3">Iniciar Sesión</button>
+                    <input type="text" class="form-contorl" name="email" value="{{ old('email') }}" style="width: 28rem;">
+                </div>
+                <div class="row m-3">
+                    <label for="password" class="form-label">Contraseña</label>
+               
+                    <input type="password" class="form-contorl" name="password" style="width: 28rem;">
+                </div>
+
+                <input type="submit" class="btn btn-primary m-3" value="Iniciar Sesión" >
+                @error('email')
+                    <div class="alert alert-danger alert-dismissible fade show">
+                    {{ $message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @enderror
             </form>
-            </div>
     </div>
 
 

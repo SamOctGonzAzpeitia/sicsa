@@ -27,5 +27,11 @@ class RoleSeeder extends Seeder
             'description' => 'Usuario del sistema',
             
         ]);
+            DB :: table ('roles') -> insert ([
+            'id' => '3',
+            'name' => 'Cliente',
+            'description' => 'Cliente del sistema',
+            
+        ]);
     }
 }

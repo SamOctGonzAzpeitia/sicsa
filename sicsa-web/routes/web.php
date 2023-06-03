@@ -19,7 +19,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('', function () {
     return view('index');
-})->name('home') ;
+})->name('sicsa') ;
 
 Route::get('/servicios', function () {
     return view('servicios');
@@ -34,7 +34,7 @@ Route::get('/contact', function () {
 })->name('contact') ;
 
 Route::get('/login', function () {
-    return view('login');
+    return view('auth.login');
 })->name('login') ;
 
 Route::get('/register', function () {
@@ -44,7 +44,7 @@ Route::get('/register', function () {
 //Rutas de inicio a portal
 Route::get('/home', function () {
     return view('home');
-})->name('inicio-sicsa') ;
+})->name('home') ;
 
 //Rutas de servicios
 
