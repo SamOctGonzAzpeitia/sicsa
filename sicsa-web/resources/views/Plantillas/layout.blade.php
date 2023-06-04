@@ -23,19 +23,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
+            
             <li class="nav-item">
             <a class="nav-link active" href="{{route('home')}}">Inicio</a>
             </li>
+            @can('verUsuarios')
             <li class="nav-item">
             <a class="nav-link" href="{{route('users')}}">Usuarios</a>
             </li>
+            @endcan
+            @can('verServicios')
             <li class="nav-item">
             <a class="nav-link" href="{{route('services')}}">Ordenes de Servicio</a>
             </li>
+            @endcan
+            @can('verClientes')
             <li class="nav-item">
-            <a class="nav-link" href="#">Clientes</a>
+            <a class="nav-link" href="{{ route('clients') }}">Clientes</a>
             </li>
-           
+            @endcan
         </ul>
         </div>
     </div>

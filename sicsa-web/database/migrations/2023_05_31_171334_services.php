@@ -17,10 +17,10 @@ class Services extends Migration
         Schema::create('services',function(Blueprint $table){
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->longtext('description');
             $table->string('client');
             $table->string('status_id');
-            $table->string('notas')->nullable();
+            $table->longtext('notas')->nullable();
             $table->string('costo')->nullable();
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_fin')->nullable();

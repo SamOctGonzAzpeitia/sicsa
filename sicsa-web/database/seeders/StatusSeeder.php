@@ -21,8 +21,5 @@ class StatusSeeder extends Seeder
         DB::table('statuses')->insert([
             'name' => 'Finalizado',
         ]);
-        DB::table('statuses')->insert([
-            'name' => 'Cancelado',
-        ]);
     }
 }

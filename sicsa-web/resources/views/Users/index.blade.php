@@ -10,11 +10,11 @@
         <h3>Usuarios</h3>
         <div class="row">
             <div class="col">
-            <form action="" class="">
-                <label for="">Buscar</label>
+            <form action="{{route('users')}}" class="" method="GET">
+                <label for="filtro">Buscar</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre, descripción, cliente" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                    <input type="text" class="form-control" placeholder="Nombre, correo" name="filtro">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
                 </div> 
             </form>
             </div>
@@ -70,5 +70,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-end">
+            {{$users->links()}}
+        </div>
     </div>
 @endsection

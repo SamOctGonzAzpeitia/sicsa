@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder :: class ,
             ServicesSeeder :: class ,
             StatusSeeder :: class ,
+            ClientSeeder :: class ,
         ]);
     }
 }

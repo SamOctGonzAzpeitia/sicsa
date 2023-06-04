@@ -16,13 +16,25 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request  $request)
     {
-        //obtener todos los usuarios
-        $users = User::all();
-        //retornar la vista con los usuarios
-        return view('users.index', ['users' => $users]);
+        //obtener valor del request
+        
+        $filtro = $request->input('filtro');
 
+        if($filtro == null){
+            $users = User::paginate(10);
+        
+            //retornar la vista con los usuarios
+            return view('users.index', ['users' => $users]);
+        }else{
+            $users = User::where('name', 'like', '%'.$filtro.'%')
+            ->orWhere('email', 'like', '%'.$filtro.'%')
+            ->paginate(10);
+        
+            //retornar la vista con los usuarios
+            return view('users.index', ['users' => $users]);
+        }   
     }
 
     /**
@@ -39,25 +51,49 @@ class UserController extends Controller
 
     private function getValidador(Request $request){
         $data = $request->except('_token'); //obtener los datos del formulario
-        $validator = Validator::make($data, [
+
+        //reglas de validacion
+        $rules = [
             'name' => 'required|max:255',
-            'email' => 'required|max:255',
+            'email' => 'required|email|unique:users,email',
             'role_id' => 'required|numeric',
             'phone' => 'required|max:10',
             'password' => 'required|max:255',
-        ]);
+        ];
 
+        //mensajes de validacion
+        $messages = [
+            'name.required' => 'El nombre es requerido',
+            'email.required' => 'El correo es requerido',
+            'email.email' => 'El correo no es valido',
+            'email.unique' => 'El correo ya esta registrado',
+            'role_id.required' => 'El rol es requerido',
+            'phone.required' => 'El telefono es requerido',
+            'password.required' => 'La contraseña es requerida',
+        ];
+        $validator = Validator::make($data, $rules, $messages);
         return $validator;
     }
 
     private function updateValidador(Request $request){
         $data = $request->except('_token'); //obtener los datos del formulario
-        $validator = Validator::make($data, [
+        
+        //reglas de validacion
+        $rules = [
             'name' => 'required|max:255',
-            'email' => 'required|max:255',
+            'email' => 'required|email',
             'role_id' => 'required|numeric',
             'phone' => 'required|max:10',
-        ]);
+        ];
+        //mensajes de validacion
+        $messages = [
+            'name.required' => 'El nombre es requerido',
+            'email.required' => 'El correo es requerido',
+            'email.email' => 'El correo no es valido',
+            'role_id.required' => 'El rol es requerido',
+            'phone.required' => 'El telefono es requerido',
+        ];
+        $validator = Validator::make($data, $rules, $messages);
 
         return $validator;
     }

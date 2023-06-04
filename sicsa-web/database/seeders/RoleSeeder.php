@@ -33,5 +33,9 @@ class RoleSeeder extends Seeder
             'description' => 'Cliente del sistema',
             
         ]);
+        DB::table('roles')->insert([
+            'name' => 'Super Administrador',
+            'description' => 'Super Administrador del sistema',
+        ]);
     }
 }

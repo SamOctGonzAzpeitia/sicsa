@@ -4,7 +4,7 @@
 @endsection
 @section('seccion')
 
-    <h3>Detalle Servicio</h3>
+    <h3>Detalle de Usuario</h3>
     <hr>
     <div class="container">
         <a href="{{ route('users.edit',  $prevAnswers['id']) }}" class="btn btn-outline-primary" >Editar</a>

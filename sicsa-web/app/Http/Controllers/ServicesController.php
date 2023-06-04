@@ -15,13 +15,24 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request  $request)
     {
-        //obtener todos los servicios
-        $services = Services::all();
         
-        //retornar la vista con los servicios
-        return view('services.index', ['services' => $services]);
+        //filtrp para servicios
+        $filtro = $request->input('filtro');
+        if($filtro == null){
+            $services = Services::paginate(10);
+            //retornar la vista con los servicios
+            return view('services.index', ['services' => $services]);
+        }else{
+            $services = Services::where('name', 'like', '%'.$filtro.'%')
+            ->orWhere('description', 'like', '%'.$filtro.'%')
+            ->orWhere('client', 'like', '%'.$filtro.'%')
+            ->paginate(10);
+            //retornar la vista con los servicios
+            return view('services.index', ['services' => $services]);
+        }
+        
 
     }
 

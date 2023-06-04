@@ -1,13 +1,13 @@
 @extends('../Plantillas/layout')
 @section('titulo')
-    Usuarios
+    Clientes
 @endsection
 @section('seccion')
 
     <div class="container">
-        <h3>Usuarios</h3>
-        <hr>
-        @if ($errors->any())
+        <h3>Editar Usuario</h3>
+            <hr>
+            @if ($errors->any())
             <div class="alert alert-danger alert-dismissible fade show">
                 @foreach ($errors->all() as $error)
                     {{ $error }}
@@ -16,10 +16,9 @@
                 @endforeach
             </div>
         @endif
-        <form action="{{route('users.store')}}" method="POST">
-            @csrf
-            @include('Users.forms')
+        <form action="{{route('clients.update', $prevAnswers['id']) }}" method="POST">
+        @csrf
+        @include('Clients.form')
         </form>
     </div>
-
 @endsection

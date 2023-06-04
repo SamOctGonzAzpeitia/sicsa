@@ -10,11 +10,11 @@
         <h3>Servicios</h3>
         <div class="row">
             <div class="col">
-            <form action="" class="">
-                <label for="">Buscar</label>
+            <form action="{{ route('services') }}" method="GET">
+                <label for="filtro">Buscar</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre, descripción, cliente" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                    <input type="text" class="form-control" placeholder="Nombre, descripción, cliente" name="filtro">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
                 </div> 
             </form>
             </div>
@@ -73,7 +73,7 @@
                             @if ($service['status_id'] == 1)
                                 <span class="badge bg-success">Activo</span>
                             @elseif ($service['status_id'] == 2)
-                                <span class="badge bg-danger">Inactivo</span>
+                                <span class="badge bg-danger">Finalizado</span>
                             @endif
                             </a>
                         </td>
@@ -86,5 +86,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-end">
+            {{$services->links()}}
+        </div>
     </div>
 @endsection

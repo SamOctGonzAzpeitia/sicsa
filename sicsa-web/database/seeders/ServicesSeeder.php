@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-use App\Models\Service;
+use App\Models\Services;
+
+
+
 class ServicesSeeder extends Seeder
 {
     /**
@@ -37,5 +40,8 @@ class ServicesSeeder extends Seeder
             'fecha_inicio' => '2021-05-31',
             'fecha_fin' => '2021-06-30',
         ]);
+
+        // \App\Models\Article::factory()->count(30)->create();
+        Services::factory()->count(30)->create();
     }
 }

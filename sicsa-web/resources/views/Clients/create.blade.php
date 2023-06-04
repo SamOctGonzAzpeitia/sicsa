@@ -1,11 +1,11 @@
 @extends('../Plantillas/layout')
 @section('titulo')
-    Usuarios
+    Clientes
 @endsection
 @section('seccion')
 
     <div class="container">
-        <h3>Usuarios</h3>
+        <h3>Clientes</h3>
         <hr>
         @if ($errors->any())
             <div class="alert alert-danger alert-dismissible fade show">
@@ -16,10 +16,11 @@
                 @endforeach
             </div>
         @endif
-        <form action="{{route('users.store')}}" method="POST">
+
+        
+        <form action="{{route('clients.store')}}" method="POST">
             @csrf
-            @include('Users.forms')
+            @include('Clients.form')
         </form>
     </div>
-
 @endsection
