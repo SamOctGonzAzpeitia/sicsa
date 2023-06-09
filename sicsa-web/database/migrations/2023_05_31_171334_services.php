@@ -18,7 +18,7 @@ class Services extends Migration
             $table->id();
             $table->string('name');
             $table->longtext('description');
-            $table->string('client');
+            $table->string('client_id');
             $table->string('status_id');
             $table->longtext('notas')->nullable();
             $table->string('costo')->nullable();

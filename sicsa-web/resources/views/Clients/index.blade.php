@@ -8,6 +8,12 @@
 
     <div class="container">
         <h3>Clientes</h3>
+        @if (session('status'))
+            <div class="alert alert-success alert-dismissible fade show">
+            {{ session('status') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row">
             <div class="col">
             <form action="{{route('clients')}}" class="" method="GET">

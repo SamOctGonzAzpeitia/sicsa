@@ -45,7 +45,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('verUsuarios', function($user){
             $role = $user->role_id;
             $allow;
-            if($role == 1 || $role == 4){
+            if($role == 4){
                 $allow = true;
             }else{
                 $allow = false;
@@ -56,7 +56,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('registrarUsuario', function($user){
             $role = $user->role_id;
             $allow;
-            if($role == 1 || $role == 4){
+            if($role == 4){
                 $allow = true;
             }else{
                 $allow = false;
@@ -66,7 +66,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('editarUsuario', function($user){
             $role = $user->role_id;
             $allow;
-            if($role == 1 || $role == 4){
+            if($role == 4){
                 $allow = true;
             }else{
                 $allow = false;
@@ -76,7 +76,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('eliminarUsuario', function($user){
             $role = $user->role_id;
             $allow;
-            if($role == 1 || $role == 4){
+            if($role == 4){
                 $allow = true;
             }else{
                 $allow = false;
@@ -95,6 +95,7 @@ class AuthServiceProvider extends ServiceProvider
             }
             return $allow;
         });
+
         Gate::define('registrarCliente', function($user){
             $role = $user->role_id;
             $allow;
@@ -108,7 +109,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('editarCliente', function($user){
             $role = $user->role_id;
             $allow;
-            if($role == 1 || $role == 4){
+            if($role == 4){
                 $allow = true;
             }else{
                 $allow = false;
@@ -118,7 +119,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('eliminarCliente', function($user){
             $role = $user->role_id;
             $allow;
-            if($role == 1 || $role == 4){
+            if($role == 4){
                 $allow = true;
             }else{
                 $allow = false;
@@ -146,6 +147,29 @@ class AuthServiceProvider extends ServiceProvider
             }
             return $allow;
         });
+        
+        Gate::define('registrarCosto', function($user){
+            $role = $user->role_id;
+            $allow;
+            if($role == 4){
+                $allow = true;
+            }else{
+                $allow = false;
+            }
+            return $allow;
+        });
+
+        Gate::define('registarDetalles', function($user){
+            $role = $user->role_id;
+            $allow;
+            if($role == 1 || $role == 4){
+                $allow = true;
+            }else{
+                $allow = false;
+            }
+            return $allow;
+        });
+
         Gate::define('editarServicio', function($user){
             $role = $user->role_id;
             $allow;
@@ -159,7 +183,18 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('eliminarServicio', function($user){
             $role = $user->role_id;
             $allow;
-            if($role == 1 || $role == 4 || $role == 3){
+            if($role == 4){
+                $allow = true;
+            }else{
+                $allow = false;
+            }
+            return $allow;
+        });
+
+        Gate::define('filtroClientes', function($user){
+            $role = $user->role_id;
+            $allow;
+            if($role == 1 || $role == 4){
                 $allow = true;
             }else{
                 $allow = false;

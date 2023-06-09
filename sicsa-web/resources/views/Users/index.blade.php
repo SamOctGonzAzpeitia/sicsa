@@ -8,6 +8,14 @@
 
     <div class="container">
         <h3>Usuarios</h3>
+
+        @if (session('status'))
+            <div class="alert alert-success alert-dismissible fade show">
+            
+            {{ session('status') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row">
             <div class="col">
             <form action="{{route('users')}}" class="" method="GET">
@@ -18,9 +26,11 @@
                 </div> 
             </form>
             </div>
+            @can('registrarUsuario')
             <div class="col">
                 <a href="{{route('users.create')}}" class="btn btn-outline-primary mt-4">Agregar Usuario</a>
             </div>
+            @endcan
         </div>
         
     </div>
@@ -54,10 +64,10 @@
                         </td>
                         <td>
                             <a style="text-decoration:none" class="link-dark link-offset-2 link-underline-opacity-0 " href="{{ url('/users/show/'.$user['id']) }}">
-                            @if($user['role_id'] == 1)
+                            @if($user['role_id'] == 1 || $user['role_id'] == 2 || $user['role_id'] == 4)
                                 Administrador   
-                            @elseif($user['role_id'] == 2)
-                                Usuario
+                            @elseif($user['role_id'] == 3)
+                                Cliente
                             @endif
                             
                         </td>

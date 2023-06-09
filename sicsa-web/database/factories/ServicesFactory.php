@@ -23,7 +23,7 @@ class ServicesFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
-            'client' => $this->faker->name(),
+            'client_id' => $this->faker->numberBetween($min = 1, $max = 5),
             'status_id' => $this->faker->numberBetween($min = 1, $max = 2),
             'notas' => $this->faker->text(),
             'costo' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 1000),

@@ -84,7 +84,7 @@ Route::post('/users/register', [UserController::class, 'store'])
     ->middleware('can:registrarUsuario')
     ->name('users.store') ;
 Route::get('/users/show/{id}', [UserController::class, 'show'])
-    ->middleware('can:editarUsuario')
+    ->middleware('can:verUsuarios')
     ->name('users.show') ;
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])
     ->middleware('can:editarUsuario')
@@ -107,7 +107,7 @@ Route::post('/clients/register', [ClientsController::class, 'store'])
     ->middleware('can:registrarCliente')
     ->name('clients.store') ;
 Route::get('/clients/show/{id}', [ClientsController::class, 'show'])
-    ->middleware('can:editarCliente')
+    ->middleware('can:verClientes')
     ->name('clients.show') ;
 Route::get('/clients/edit/{id}', [ClientsController::class, 'edit'])
     ->middleware('can:editarCliente')

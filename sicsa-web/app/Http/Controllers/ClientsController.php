@@ -96,7 +96,8 @@ class ClientsController extends Controller
             $client->address = $request->get('address');
             $client->email = $request->get('email');
             $client->save();
-            return redirect()->route('clients');
+            return redirect()->route('clients')
+            ->with('success', 'Cliente creado correctamente');
         }        
     }
 
@@ -130,7 +131,8 @@ class ClientsController extends Controller
             $client->address = $request->get('address');
             $client->email = $request->get('email');
             $client->save();
-            return redirect()->route('clients');
+            return redirect()->route('clients')
+            ->with('success', 'Cliente actualizado correctamente');
         }
     }
 
@@ -138,7 +140,8 @@ class ClientsController extends Controller
     {   
         $client = Clients::findOrFail($id);
         $client->delete();
-        return redirect()->route('clients');
+        return redirect()->route('clients')
+        ->with('success', 'Cliente eliminado correctamente');
         
     }
 }

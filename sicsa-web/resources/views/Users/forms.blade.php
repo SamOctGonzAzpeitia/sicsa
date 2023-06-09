@@ -1,4 +1,4 @@
-
+<script src="{{asset('/js/user.js')}} "></script>
 <div class="container">
     <div class="row mb-3">
         <div class="col">
@@ -25,8 +25,8 @@
     </div>
     <div class="row mb-3">
         <div class="col">
-        <label for="role">Rol</label>
-        <select class="form-select" @if(!empty($read))readonly disabled @endif aria-label="Default select example" name="role_id" id="role_id">
+        <label for="role_id">Rol</label>
+        <select class="form-select" @if(!empty($read))readonly disabled @endif aria-label="Default select example" name="role_id" id="role_id" required onchange="show()">
                 @if(!empty($valRole))
                 <option value="{{$valRole['id']}}">{{$valRole['name']}}</option>
                 @endif
@@ -37,15 +37,35 @@
         </select>
         </div>
     </div>
+    <div class="row mb-3" name="clientContainer" id="clientContainer" @if(empty($valClient)) hidden @endif>
+        <div class="col">
+            <label for="client">Cliente</label>
+            <select name="client_id" id="client_id" class="form-select" @if(!empty($read))readonly disabled @endif>
+                @if(!empty($valClient))
+                <option value="{{$valClient['id']}}">{{$valClient['name']}}</option>
+                @endif
+                <option value="">Selecciona un cliente</option>
+                @foreach($clients as $client)
+                    <option value="{{$client->id}}">{{$client->name}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
     <div class="row mb-3">
         <div class="col">
         <label for="phone">Telefono</label>
         <input type="text" class="form-control" @if(!empty($read))readonly disabled @endif name="phone" id="phone" value="@if(!empty($prevAnswers['phone'])){{$prevAnswers['phone']}}@endif">
         </div>
     </div>
+    <div class="row mb-3">
+        <div class="col">
+        <label for="address">Dirección</label>
+        <input type="text" class="form-control" @if(!empty($read))readonly disabled @endif name="address" id="address" value="@if(!empty($prevAnswers['address'])){{$prevAnswers['address']}}@endif">
+        </div>
+    </div>
     
     <button type="submit" @if(!empty($read)) readonly hidden @endif class="btn btn-success">Guardar</button>
-    <a href="{{route('users')}}"  type="button" class="btn btn-danger ms-4" >Cancelar</a>
+    <a href="{{route('users')}}"  type="button" class="btn btn-danger ms-4" >Regresar</a>
     </div>
 
 </div>

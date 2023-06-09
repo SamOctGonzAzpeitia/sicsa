@@ -26,7 +26,7 @@ class ClientSeeder extends Seeder
             'address' => 'Calle 1',
         ]);
 
-        Clients::factory(10)->create();
+        Clients::factory(15)->create();
 
     }
 }

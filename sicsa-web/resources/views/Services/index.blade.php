@@ -1,3 +1,4 @@
+<script src="{{asset('/js/service.js')}} "></script>
 @extends('../Plantillas/layout')
 
 @section('titulo')
@@ -8,24 +9,38 @@
 
     <div class="container">
         <h3>Servicios</h3>
+        @if (session('status'))
+            <div class="alert alert-success alert-dismissible fade show">
+            
+            {{ session('status') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row">
             <div class="col">
             <form action="{{ route('services') }}" method="GET">
                 <label for="filtro">Buscar</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre, descripción, cliente" name="filtro">
+                    <input type="text" class="form-control" placeholder="Nombre, descripción" name="filtro">
                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
                 </div> 
             </form>
             </div>
             <div class="col">
-                <label for="">Fecha de inicio</label>
-                <input type="date" class="form-control">
+                <label for="date">Fecha de inicio</label>
+                <input type="date" class="form-control" name="date" id="date" required onchange="filterDate()">
             </div>
+            @can('filtroClientes')
             <div class="col">
-                <label for="">Fecha final </label>
-                <input type="date" class="form-control">
+                <label for="">Cliente</label>
+                <select name="client" id="client" class="form-select">
+                    <option value="">Selecciona un cliente</option>
+                    @foreach ($clients as $client)
+                        <option value="{{$client['id']}}">{{$client['name']}}</option>
+                    @endforeach
+                </select>
             </div>
+            @endcan
             <div class="col">
                 
                 <a href="{{route('services.create')}}" class="btn btn-outline-primary mt-4">Agregar Servicio</a>
@@ -65,7 +80,8 @@
                             </td>
                         <td>
                             <a style="text-decoration:none" class="link-dark link-offset-2" href="{{ url('/services/show/'.$service['id']) }}">
-                            {{$service['client']}}
+                            
+                            {{$clients[$service['client_id']-1]['name']}}
                             </a>
                         </td>
                         <td>

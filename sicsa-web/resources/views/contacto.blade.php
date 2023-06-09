@@ -46,11 +46,11 @@
                     <img src="img/fb.jpg" style="width: 30px;height:30px ">
                     <a href= "https://www.facebook.com/sicsa.sicsa.7731?ref"> Sicsa Ingeniería</a>
                     <br><br>
-                    <h7><img src="img/telefono2.jpg" style="width: 30px;height:30px ">(442) 2153873</h7>
+                    <h7><img src="img/telefono2.jpg" style="width: 30px;height:30px "> (442) 2153873</h7>
                     <br><br>
-                    <a href="https://wa.link/ihxwkd"><img src="img/wha2.jpg" style="width: 30px;height:30px ">442 7160438</a>
+                    <a href="https://wa.link/ihxwkd"><img src="img/wha2.jpg" style="width: 30px;height:30px "> 442 7160438</a>
                     <br><br>
-                    <h7><img src="img/email4.jpg" style="width: 30px;height:30px ">sicsa_ventas@prodigy.net.mx</h7>
+                    <h7><img src="img/email4.jpg" style="width: 30px;height:30px "> sicsa_ventas@prodigy.net.mx</h7>
                 </div>
         </div>        
 			

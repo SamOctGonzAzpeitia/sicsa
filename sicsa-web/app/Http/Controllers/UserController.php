@@ -9,6 +9,8 @@ use Illuminate\Validation\Rule;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Role;
+use App\Models\Clients;
+
 class UserController extends Controller
 {
     /**
@@ -44,8 +46,64 @@ class UserController extends Controller
      */
     public function create()
     {
-        //vista para crear un usuario
-        return view('users.create', ['roles' => Role::all()]);
+        //obtener clientes
+        $clients = Clients::all();
+        //obtener roles
+        $roles = Role::all();
+        //retornar vista con clientes y roles
+        return view('users.create', ['clients' => $clients, 'roles' => $roles]);
+       
+    }
+
+    private function validadorClient(Request $request){
+
+        //reglas de validacion
+        $rules = [
+            'name' => 'required|max:255',
+            'phone' => 'required|max:10',
+            'address' => 'required|max:255',
+            'role_id' => 'required|numeric',
+            'client_id' => 'required|numeric',
+            'email' => 'required|email|unique:clients,email',
+        ];
+        //mensajes de validacion
+        $messages = [
+            'name.required' => 'El nombre es requerido',
+            'phone.required' => 'El telefono es requerido',
+            'address.required' => 'La direccion es requerida',
+            'email.required' => 'El correo es requerido',
+            'email.email' => 'El correo no es valido',
+            'email.unique' => 'El correo ya esta registrado',
+            'role_id.required' => 'El rol es requerido',
+            'client_id.required' => 'El cliente es requerido',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        return $validator;
+
+    }
+
+    private function updateClient(Request $request){
+        //reglas de validacion
+        $rules = [
+            'name' => 'required|max:255',
+            'phone' => 'required|max:10',
+            'address' => 'required|max:255',
+            'role_id' => 'required|numeric',
+            'client_id' => 'required|numeric',
+            'email' => 'required|email',
+        ];
+        //mensajes de validacion
+        $messages = [
+            'name.required' => 'El nombre es requerido',
+            'phone.required' => 'El telefono es requerido',
+            'address.required' => 'La direccion es requerida',
+            'email.required' => 'El correo es requerido',
+            'email.email' => 'El correo no es valido',
+            'role_id.required' => 'El rol es requerido',
+            'client_id.required' => 'El cliente es requerido',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        return $validator;
     }
 
 
@@ -108,7 +166,14 @@ class UserController extends Controller
     {
         //añadir un nuevo usuario
         //validar los datos del formulario
-        $validator = $this->getValidador($request);
+        $valRole=$request->role_id;
+        
+        if($valRole == 3){
+            $validator = $this->validadorClient($request);
+        }else{
+            $validator = $this->getValidador($request);
+        }
+        
         if ($validator->fails()) {
             return redirect()->route('users.create')
                 ->withErrors($validator)
@@ -119,7 +184,11 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email; 
             $user->role_id = $request->role_id;
+            if($valRole == 3){
+                $user->client_id = $request->client_id;
+            }
             $user->phone = $request->phone;
+            $user->address = $request->address;
             $user->password = Hash::make($request->password);
             $user->save();
             return redirect()->route('users')
@@ -142,9 +211,16 @@ class UserController extends Controller
         $valRole = Role::find($user->role_id);
         //$user->role = $role;
         $roles = Role::all();
+        $clients = Clients::all();
+        $valClient = $user->client_id;
+        // obtener el cliente del usuario
+        $client = Clients::find($valClient);
+        
+        
+
         
         //retornar la vista con el usuario
-        return view('users.details', ['read' =>true, 'prevAnswers' => $user, 'roles' => $roles, 'valRole' => $valRole]);
+        return view('users.details', ['read' =>true, 'prevAnswers' => $user, 'roles' => $roles, 'valRole' => $valRole, 'clients' => $clients, 'valClient' => $client]);
     }
 
     /**
@@ -161,7 +237,12 @@ class UserController extends Controller
         //$user->role = $role;
         $roles = Role::all();
         //retornar la vista con el usuario
-        return view('users.edit', ['edit' =>true, 'prevAnswers' => $user, 'roles' => $roles, 'valRole' => $valRole]);
+        $clients = Clients::all();
+        $valClient = $user->client_id;
+        // obtener el cliente del usuario
+        $client = Clients::find($valClient);
+
+        return view('users.edit', ['edit' =>true, 'prevAnswers' => $user, 'roles' => $roles, 'valRole' => $valRole, 'clients' => $clients, 'valClient' => $client]);
     }
 
     /**
@@ -175,8 +256,19 @@ class UserController extends Controller
     {
         //obtener un usuario por id
         $user = User::find($id);
+
+        //obtener el rol del usuario
+        $role = Role::find($user->role_id);
+        $valRole = $role->id;
+
+        if($valRole == 3){
+            $validator = $this->updateClient($request);
+        }else{
+            $validator = $this->updateValidador($request);
+        }
+
         //validar los datos del formulario
-        $validator = $this->updateValidador($request);
+        
         if ($validator->fails()) {
             return redirect()->route('users.edit', ['id' => $id])
                 ->withErrors($validator)
@@ -185,6 +277,9 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email; 
             $user->role_id = $request->role_id;
+            if($valRole == 3){
+                $user->client_id = $request->client_id;
+            }
             $user->phone = $request->phone;
             $user->save();
             return redirect()->route('users')

@@ -24,7 +24,7 @@
       <div class="navbar-collapse collapse" id="navbarCollapse" style="">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item px-2 mr-auto">
-                    <a class="nav-link h5" href="{{route('home')}}">Inicio</a>
+                    <a class="nav-link h5" href="{{route('sicsa')}}">Inicio</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link h5"  href="{{route('servicios')}}">Servicios</a>

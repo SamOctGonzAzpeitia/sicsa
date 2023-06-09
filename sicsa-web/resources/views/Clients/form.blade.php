@@ -31,7 +31,7 @@
     <div class="row mt-3">
         <div class="col">
         <input type="submit" @if(!empty($read))readonly hidden @endif class="btn btn-success" value="Guardar">
-        <a href="{{route('clients')}}" class="btn btn-danger">Cancelar</a>
+        <a href="{{route('clients')}}" class="btn btn-danger">Regresar</a>
         </div>
     
     </div>
