@@ -47,6 +47,33 @@ class ServicesController extends Controller
 
     }
 
+    public function dateFilter(Request $request){
+        $user = auth()->user()->role_id;
+        $clients = Clients::all();
+        $fecha_inicio = $request->input('fecha_inicio');
+        $fecha_fin = $request->input('fecha_fin');
+        $valClient = auth()->user()->client_id;
+        
+        if($user == 3){
+            $services = Services::where('client_id', '=', $valClient)->whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])->paginate(10);
+            //retornar la vista con los servicios
+            return view('services.index', ['services' => $services, 'clients' => $clients]);
+        }else{
+            $services = Services::whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])->paginate(10);
+            //retornar la vista con los servicios
+            return view('services.index', ['services' => $services, 'clients' => $clients]);
+        }
+
+    }
+
+    public function clientFilter(Request $request){
+        $clients = Clients::all();
+        $client_id = $request->input('client_id');
+        $services = Services::where('client_id', '=', $client_id)->paginate(10);
+        //retornar la vista con los servicios
+        return view('services.index', ['services' => $services, 'clients' => $clients]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -18,27 +18,44 @@
         @endif
         <div class="row">
             <div class="col">
-            <form action="{{ route('services') }}" method="GET">
-                <label for="filtro">Buscar</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nombre, descripción" name="filtro">
-                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
-                </div> 
-            </form>
+                <form action="{{ route('services') }}" method="GET">
+                    <label for="filtro">Buscar</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Nombre, descripción" name="filtro">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
+                    </div> 
+                </form>
             </div>
             <div class="col">
+                <form action="{{ route('services.dateFilter') }}" method="GET">
                 <label for="date">Fecha de inicio</label>
-                <input type="date" class="form-control" name="date" id="date" required onchange="filterDate()">
+                <input type="date" class="form-control" name="fecha_inicio" id="fecha_inicio">
             </div>
+            <div class="col">
+                <label for="date">Fecha de fin</label>
+                <input type="date" class="form-control" name="fecha_fin" id="fecha_fin">
+            </div>
+            <div class="col mb-2">
+            <button type="submit" class="btn btn-outline-primary mt-4">Filtrar</button>
+            </div>
+            
+            </form>
+        </div>
+        <div class="row">
             @can('filtroClientes')
             <div class="col">
-                <label for="">Cliente</label>
-                <select name="client" id="client" class="form-select">
-                    <option value="">Selecciona un cliente</option>
-                    @foreach ($clients as $client)
-                        <option value="{{$client['id']}}">{{$client['name']}}</option>
-                    @endforeach
-                </select>
+                <form action="{{ route('services.clientFilter') }}" method="GET">
+                    <label for="">Cliente</label>
+                    <select name="client_id" id="client_id" class="form-select">
+                        <option value="">Selecciona un cliente</option>
+                        @foreach ($clients as $client)
+                            <option value="{{$client['id']}}">{{$client['name']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col mb-2">
+                <button type="submit" class="btn btn-outline-primary mt-4">Filtrar</button>
+                </form>
             </div>
             @endcan
             <div class="col">

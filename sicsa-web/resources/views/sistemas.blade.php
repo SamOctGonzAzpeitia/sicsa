@@ -24,7 +24,7 @@
             <p class="card-text">Sistema de gestión con las áreas más importantes de la empresa que son los módulos: Ventas, Cuentas Por Cobrar, Cuentas por Pagar, Compras y Control de Inventarios.</p>
             
             </div>
-            <a href="{{route('contact')}}" class="btn btn-success">Info</a>
+            <a href="{{route('pai')}}" class="btn btn-success">+ Info</a>
         </div>
 
         <div class="card col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 m-2 " style="max-width:319px;">
@@ -35,7 +35,7 @@
             <p class="card-text">Esta solución lleva el control total de sus ventas, compras  con opción a la actualización de los precios de venta automáticamente proporcionando además   información del estado de su inventario.</p>
             
             </div>
-            <a href="{{route('contact')}}" class="btn btn-success">Info</a>
+            <a href="{{route('pv')}}" class="btn btn-success">+ Info</a>
         </div>
 
         <div class="card col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 m-2 .img-fluid" style="max-width:319px;">
@@ -46,7 +46,7 @@
             <p class="card-text">Implementacion de un control estricto de los ingresos de la Asociación así como los adeudos de los colonos, de igual manera, conocer de manera oportuna el status de cada lote.</p>
             
             </div>
-            <a href="{{route('contact')}}" class="btn btn-success mt-4">Info</a>
+            <a href="{{route('cac')}}" class="btn btn-success mt-4">+ Info</a>
         </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
             <p class="card-text">Esta aplicación permite comparar los CFDIs emitidos en su empresa por su Sistema Administrativo comparado con los registros reportados en el Portal del SAT.</p>
             
             </div>
-            <a href="{{route('contact')}}" class="btn btn-success">Info</a>
+            <a href="{{route('contact')}}" class="btn btn-success">+ Info</a>
         </div>
 
         <div class="card col-xs col-sm col-md col-lg col-xl m-2 .img-fluid" style="max-width:319px;">
@@ -77,7 +77,7 @@
             <p class="card-text">Está aplicación realiza la función de timbrar nóminas, tal como lo determina el SAT, cada timbre ocupa un CFDI y equivale a un recibo de nómina emitido a cada miembro de la empresa.</p>
             
             </div>
-            <a href="{{route('contact')}}" class="btn btn-success">Info</a>
+            <a href="{{route('nominas')}}" class="btn btn-success">+ Info</a>
         </div>
         </div>
     </div>

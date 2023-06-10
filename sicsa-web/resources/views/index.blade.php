@@ -8,7 +8,7 @@
 
 
 <div class="mt-5">
-        <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-interval="10000">
                     <img src="/img/nos2.jpg">
@@ -27,8 +27,8 @@
                 <div class="carousel-item" data-interval="10000">
                     <img src="/img/cfdi.png">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5 style="color: black">Actualizate a CFDI 4.0!</h5>
-                        <h6 style="color: black">Evita problemas y actualiza tu sistema con nosotros</h6>
+                        <h5 style="color: white">Actualizate a CFDI 4.0!</h5>
+                        <h6 style="color: white">Evita problemas y actualiza tu sistema con nosotros</h6>
                     </div>
                 </div>
             </div>

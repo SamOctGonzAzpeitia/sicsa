@@ -31,6 +31,22 @@ Route::get('/sistemas', function () {
     return view('sistemas');
 })->name('sistemas') ;
 
+Route::get('/PAI', function () {
+    return view('Sistemas.pai');
+})->name('pai') ;
+
+Route::get('/P-V', function () {
+    return view('Sistemas.pv');
+})->name('pv') ;
+
+Route::get('/CAC', function () {
+    return view('Sistemas.cac');
+})->name('cac') ;
+
+Route::get('/Nominas', function () {
+    return view('Sistemas.nominas');
+})->name('nominas') ;
+
 Route::get('/contact', function () {
     return view('contacto');
 })->name('contact') ;
@@ -53,6 +69,15 @@ Route::get('/home', function () {
 Route::get('/services/index', [ServicesController::class, 'index'])
     ->middleware('can:verServicios')
     ->name('services') ;
+
+Route::get('/services/dateFilter', [ServicesController::class, 'dateFilter'])
+    ->middleware('can:verServicios')
+    ->name('services.dateFilter') ;    
+
+Route::get('/services/clientsFilter', [ServicesController::class, 'clientFilter'])
+    ->middleware('can:verServicios')
+    ->name('services.clientFilter') ;
+
 Route::get('/services/create', [ServicesController::class, 'create'])
     ->middleware('can:registrarServicio')
     ->name('services.create') ;
