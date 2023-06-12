@@ -39,16 +39,16 @@ function validate(
     }
 
     if (error) {
-        domElem.classList.remove("uk-form-success");
-        domElem.classList.add("uk-form-danger");
+        domElem.classList.remove("border-success");
+        domElem.classList.add("border-danger");
         notification.innerText = error;
-        notification.classList.remove("uk-animation-reverse");
-        notification.classList.add("uk-animation-slide-top");
+        notification.classList.remove(".placeholder-glow");
+        notification.classList.add(".placeholder-glow");
         notification.hidden = false;
     } else {
-        notification.classList.remove("uk-animation-slide-top");
-        domElem.classList.add("uk-form-success");
-        domElem.classList.remove("uk-form-danger");
+        notification.classList.remove(".placeholder-glow");
+        domElem.classList.add("border-success");
+        domElem.classList.remove("border-danger");
         notification.hidden = true;
     }
 }
@@ -109,10 +109,11 @@ function validateRFC(rfc) {
 
 function validatePhoneNumber(phoneNumber) {
     const valid = String(phoneNumber).match(/^([0-9]{10})$/);
-    return valid ? undefined : "Ingresa solo 10 digitos";
+    return valid ? undefined : "Deben ser 10 digitos";
 }
 
 function validatePass(password){
+    console.log(password);
     const valid = String(password).match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/);
     return valid ? undefined : "La contraseña debe tener mínimo 8 caracteres\n Una mayúscula\n Una minúscula \nUn caracter especial (#?!@$%^&*-)"
 }

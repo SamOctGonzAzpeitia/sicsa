@@ -109,7 +109,7 @@ class ServicesController extends Controller
             'description.required' => 'La descripcion es requerida',
             'fecha_inicio.required' => 'La fecha de reporte es requerida',
             'client_id.required' => 'El cliente es requerido',
-            'status_id.required' => 'El estado es requerido',
+            'status_id.required' => 'El status es requerido',
             
         ];
 

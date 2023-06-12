@@ -1,14 +1,18 @@
 
+<script src="{{asset('/js/utils.js')}} "></script>
+<script src="{{asset('/js/validator.js')}} "></script>
     <div class="row m-3">
         <div class="col">
             <label for="">Nombre</label>
-            <input type="text" class="form-control" @if(!empty($read)) readonly disabled @endif id="name" name="name" value="@if(!empty($prevAnswers['name'])){{$prevAnswers['name']}}@endif">
+            <input type="text" class="form-control" @if(!empty($read)) readonly disabled @endif id="name" name="name" value="@if(!empty($prevAnswers['name'])){{$prevAnswers['name']}}@endif"  oninput="validate('name', 'text', 255, 5)">
+            <span class="text-danger"  style="z-index: -10; font-size: 0.8em;" hidden></span>
         </div>
     </div>
     <div class="row m-3">
         <div class="col">
             <label for="">Descripción</label>
-            <input type="text" class="form-control" @if(!empty($read)) readonly disabled @endif id="description" name="description" value="@if(!empty($prevAnswers['description'])){{$prevAnswers['description']}}@endif">
+            <input type="text" class="form-control" @if(!empty($read)) readonly disabled @endif id="description" name="description" value="@if(!empty($prevAnswers['description'])){{$prevAnswers['description']}}@endif" oninput="validate('description', 'text', 255, 5)">
+            <span class="text-danger"  style="z-index: -10; font-size: 0.8em;" hidden></span>
         </div>
     </div>
    
@@ -26,7 +30,8 @@
     <div class="row m-3">
         <div class="col">
             <label for="">Notas</label>
-            <input type="text" class="form-control" @if(!empty($read)) readonly disabled @endif name="notas" id="notas" value="@if(!empty($prevAnswers['notas'])){{$prevAnswers['notas']}}@endif">
+            <input type="text" class="form-control" @if(!empty($read)) readonly disabled @endif name="notas" id="notas" value="@if(!empty($prevAnswers['notas'])){{$prevAnswers['notas']}}@endif" oninput="validate('notas', 'text', 255, 5)">
+            <span class="text-danger"  style="z-index: -10; font-size: 0.8em;" hidden></span>
         </div>
     </div>
     @can('registarDetalles')
