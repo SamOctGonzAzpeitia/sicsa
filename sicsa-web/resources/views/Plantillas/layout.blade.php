@@ -34,6 +34,9 @@
             @endcan
             @can('verServicios')
             <li class="nav-item">
+            <a class="nav-link" href="">Llamadas</a>
+            </li>
+            <li class="nav-item">
             <a class="nav-link" href="{{route('services')}}">Ordenes de Servicio</a>
             </li>
             @endcan

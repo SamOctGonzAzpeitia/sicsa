@@ -22,6 +22,8 @@ class Services extends Migration
             $table->string('status_id');
             $table->longtext('notas')->nullable();
             $table->string('costo')->nullable();
+            $table->string('details')->nullable();
+            $table->boolean('order_service')->nullable();
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_fin')->nullable();
             $table->timestamps();
