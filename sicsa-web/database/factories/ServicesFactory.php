@@ -27,6 +27,7 @@ class ServicesFactory extends Factory
             'status_id' => $this->faker->numberBetween($min = 1, $max = 2),
             'notas' => $this->faker->text(),
             'costo' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 1000),
+            'order_service' => $this->faker->boolean(), // '1' for true and '0' for false,
             'fecha_inicio' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'fecha_fin' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
         ];

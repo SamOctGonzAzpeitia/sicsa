@@ -1,10 +1,10 @@
 @extends('../Plantillas/layout')
 
-@section('titulo', 'Crear Llamada')
-    
+@section('titulo', 'Detalles Llamada')
+
 @section('seccion')
-    
-    <h3>Crear Llamada</h3>
+
+<h3>Editar Llamada</h3>
     <hr>
     @if ($errors->any())
             <div class="alert alert-danger alert-dismissible fade show">
@@ -15,13 +15,9 @@
                 @endforeach
             </div>
     @endif
-    <form action="{{route('calls.store')}}" method="post">
+    <form action="{{route('calls.update', $prevAnswers['id']) }}" method="post">
     @csrf
         @include('Calls.form')
     </form>
     
-
-    
-
-@endSection
-    
+@endsection

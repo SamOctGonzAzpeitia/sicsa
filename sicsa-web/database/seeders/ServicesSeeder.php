@@ -43,6 +43,6 @@ class ServicesSeeder extends Seeder
         
 
         // \App\Models\Article::factory()->count(30)->create();
-        Services::factory()->count(30)->create();
+        Services::factory()->count(40)->create();
     }
 }

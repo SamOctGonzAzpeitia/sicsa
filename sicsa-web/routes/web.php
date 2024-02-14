@@ -5,6 +5,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\CallsController;
 
 
 /*
@@ -147,3 +148,23 @@ Route::post('/clients/delete/{id}', [ClientsController::class, 'destroy'])
 //Rutas de roles
 Route::get('/roles', [RoleController::class, 'index'])
     ->name('roles') ;
+
+// Rutas de llamadas
+Route::get('/calls', [CallsController::class, 'index'])
+    ->name('calls') ;
+
+Route::get('/calls/create', [CallsController::class, 'create'])
+    ->name('calls.create') ;
+
+Route::post('/calls/register', [CallsController::class, 'store'])
+    ->name('calls.store') ;
+
+Route::get('/calls/show/{id}', [CallsController::class, 'show'])
+    ->name('calls.show') ;
+
+Route::get('/calls/edit/{id}', [CallsController::class, 'edit'])
+    ->name('calls.edit');
+
+Route::post('/calls/update/{id}', [CallsController::class, 'update'])
+    ->name('calls.update');
+
