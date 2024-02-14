@@ -25,17 +25,19 @@
         <ul class="navbar-nav">
             
             <li class="nav-item">
-            <a class="nav-link active" href="{{route('home')}}">Inicio</a>
+            <a class="nav-link" href="{{route('home')}}">Inicio</a>
             </li>
             @can('verUsuarios')
             <li class="nav-item">
             <a class="nav-link" href="{{route('users')}}">Usuarios</a>
             </li>
             @endcan
-            @can('verServicios')
+            @can('verLlamadas')
             <li class="nav-item">
             <a class="nav-link" href="{{route('calls')}}">Llamadas</a>
             </li>
+            @endcan
+            @can('verServicios')
             <li class="nav-item">
             <a class="nav-link" href="{{route('services')}}">Ordenes de Servicio</a>
             </li>

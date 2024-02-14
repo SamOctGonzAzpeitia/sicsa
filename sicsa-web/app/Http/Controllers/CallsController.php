@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
+use App\Utils\ErrorParser;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Services;
 use App\Models\Status;
@@ -55,25 +57,18 @@ class CallsController extends Controller
         $data = $request->except('_token');
 
         $rules = [
-            'name' => 'required'|'max:255'|'min:5',
-            'description' => 'required'|'max:255'|'min:5',
-            'fecha_inicio' => 'required'|'date',
-            'fecha_final' => 'required',
-            
-            
+            'name' => 'required|max:255|min:5',
+            'description' => 'required|max:255|min:5',
+            'fecha_inicio' => 'required|date',
+                        
         ];
         
         $messages=[
             'name.required' => 'El nombre es requerido',
-            'name.max' => 'El nombre no puede ser mayor a 255 caracteres',
             'name.min' => 'El nombre no puede ser menor a 5 caracteres',
             'description.required' => 'La descripción es requerida',
-            'description.max' => 'La descripción no puede ser mayor a 255 caracteres',
-            'description.min' => 'La descripción no puede ser menor a 5 caracteres',
             'fecha_inicio.required' => 'La fecha de inicio es requerida',
             'fecha_inicio.date' => 'La fecha de inicio no es válida',
-            'fecha_final.required' => 'La fecha de fin es requerida',
-            'fecha_final.date' => 'La fecha de fin no es válida',
         ];
         $validator = Validator::make($data, $rules, $messages);
         return $validator;
@@ -89,20 +84,24 @@ class CallsController extends Controller
     {
         //
         //validar los datos
-        $validator = $this->getValidador($request);
-
+        
+        $validator = $this->getvalidador($request);
+        
         if($validator->fails()){
-            return redirect('calls/create')->withErrors($validator)->withInput();
+            return redirect('calls/create')
+            ->withErrors($validator)
+            ->withInput();
         }else{
             //guardar los datos
             $service = new Services();
             $service->name = $request->input('name');
             $service->description = $request->input('description');
             $service->fecha_inicio = $request->input('fecha_inicio');
-            $service->fecha_final = $request->input('fecha_final');
+            $service->fecha_fin = $request->input('fecha_final');
             $service->notas = $request->input('notas');
             $service->client_id = $request->input('client_id');
-            $service->order_service = 0;
+            $service->status_id = 1;
+            $service->order_service = '0';
             $service->save();
 
             return redirect()->route('calls')->with('mensaje', 'Llamada creada con éxito');
@@ -158,14 +157,15 @@ class CallsController extends Controller
             return redirect('calls/edit')->withErrors($validator)->withInput();
         }else{
             //guardar los datos
-            $service = new Services();
+            $service = Services::find($id);
             $service->name = $request->input('name');
             $service->description = $request->input('description');
             $service->fecha_inicio = $request->input('fecha_inicio');
-            $service->fecha_final = $request->input('fecha_final');
+            $service->fecha_fin = $request->input('fecha_final');
             $service->notas = $request->input('notas');
             $service->client_id = $request->input('client_id');
-            $service->order_service = 0;
+            $service->order_service = '0';
+            $service->status_id = 1;
             $service->save();
 
             return redirect()->route('calls')->with('mensaje', 'Llamada actualizada con éxito');
@@ -183,9 +183,17 @@ class CallsController extends Controller
         //
         $service = Services::find($id);
         $service->delete();
-        return redirect()->route('services')
+        return redirect()->route('calls')
                 ->with('status', 'Llamada eliminada exitosamente');
         
 
+    }
+
+    public function service($id){
+        $service = Services::find($id);
+        $service->order_service = 1;
+        $service->save();
+        return redirect()->route('calls')
+                ->with('status', 'Llamada convertida en servicio exitosamente');
     }
 }

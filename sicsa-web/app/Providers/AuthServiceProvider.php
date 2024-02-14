@@ -202,5 +202,61 @@ class AuthServiceProvider extends ServiceProvider
             return $allow;
         });
 
+        //Llamadas
+        Gate::define('verLlamadas', function($user){
+            $role = $user->role_id;
+            $allow;
+            if($role == 4){
+                $allow = true;
+            }else{
+                $allow = false;
+            }
+            return $allow;
+        });
+
+        Gate::define('registrarLlamada', function($user){
+            $role = $user->role_id;
+            $allow;
+            if($role == 4){
+                $allow = true;
+            }else{
+                $allow = false;
+            }
+            return $allow;
+        });
+
+        Gate::define('editarLlamada', function($user){
+            $role = $user->role_id;
+            $allow;
+            if($role == 4){
+                $allow = true;
+            }else{
+                $allow = false;
+            }
+            return $allow;
+        });
+
+        Gate::define('eliminarLlamada', function($user){
+            $role = $user->role_id;
+            $allow;
+            if($role == 4){
+                $allow = true;
+            }else{
+                $allow = false;
+            }
+            return $allow;
+        });
+
+        Gate::define('llamadasServicio', function($user){
+            $role = $user->role_id;
+            $allow;
+            if($role == 4){
+                $allow = true;
+            }else{
+                $allow = false;
+            }
+            return $allow;
+        });
+
     }
 }

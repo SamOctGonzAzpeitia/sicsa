@@ -22,10 +22,11 @@ class ServicesController extends Controller
         $user = auth()->user()->role_id;
         $clients = Clients::all();
         $valClient = auth()->user()->client_id;
+        
 
         
         if($user == 3){
-            $services = Services::where('client_id', '=', $valClient)->paginate(10);
+            $services = Services::where('client_id', $valClient)->paginate(10);
             //retornar la vista con los servicios
             return view('services.index', ['services' => $services, 'clients' => $clients]);
         }
@@ -33,13 +34,14 @@ class ServicesController extends Controller
         //filtro para servicios
         $filtro = $request->input('filtro');
         if($filtro == null){
-            $services = Services::paginate(10);
+            $services = Services::where('order_service', 1)->paginate(10);
             //retornar la vista con los servicios
             return view('services.index', ['services' => $services, 'clients' => $clients]);
         }else{
-            $services = Services::where('name', 'like', '%'.$filtro.'%')
-            ->orWhere('description', 'like', '%'.$filtro.'%')
-            ->paginate(10);
+            $services = Services::where('order_service', 1)
+                ->where('name', 'like', '%'.$filtro.'%')
+                ->orWhere('description', 'like', '%'.$filtro.'%')
+                ->paginate(10);
             //retornar la vista con los servicios
             return view('services.index', ['services' => $services, 'clients' => $clients]);
         }
@@ -59,7 +61,9 @@ class ServicesController extends Controller
             //retornar la vista con los servicios
             return view('services.index', ['services' => $services, 'clients' => $clients]);
         }else{
-            $services = Services::whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])->paginate(10);
+            $services = Services::where('order_service', 1)->
+                whereBetween('fecha_inicio', [$fecha_inicio, $fecha_fin])
+                ->paginate(10);
             //retornar la vista con los servicios
             return view('services.index', ['services' => $services, 'clients' => $clients]);
         }

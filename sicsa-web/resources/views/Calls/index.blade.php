@@ -77,6 +77,7 @@
                 <th scope="col">Descripcion</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Fecha de inicio</th>
+                <th scope="col">Acción</th>
                 
                 </tr>
             </thead>
@@ -103,6 +104,12 @@
                         <td>
                             <a style="text-decoration:none" class="link-dark link-offset-2 link-underline-opacity-0 " href="{{ url('/calls/show/'.$service['id']) }}">
                             {{$service['fecha_inicio']}}
+                        </td>
+                        <td>
+                        <form action="{{ route('calls.service', $service['id'])}}" method="POST">
+                            @csrf
+                            <button class="btn btn-outline-warning" type="submit">Hacer Servicio</button>
+                        </form>
                         </td>
                         
                 </tr>

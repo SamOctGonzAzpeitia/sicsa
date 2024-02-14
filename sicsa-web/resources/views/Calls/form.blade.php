@@ -23,7 +23,7 @@
         </div>
         <div class="col">
             <label for="">Fecha de fin</label>
-            <input type="date" class="form-control" @if(!empty($read)) readonly disabled @endif name="fecha_final" id="fecha_final" value="@if(!empty($prevAnswers['fecha_final'])){{$prevAnswers['fecha_final']}}@endif">
+            <input type="date" class="form-control" @if(!empty($read)) readonly disabled @endif name="fecha_final" id="fecha_final" value="@if(!empty($prevAnswers['fecha_fin'])){{$prevAnswers['fecha_fin']}}@endif">
         </div>
     </div>
 

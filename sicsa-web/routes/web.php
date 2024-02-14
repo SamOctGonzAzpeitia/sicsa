@@ -151,20 +151,34 @@ Route::get('/roles', [RoleController::class, 'index'])
 
 // Rutas de llamadas
 Route::get('/calls', [CallsController::class, 'index'])
+    ->middleware('can:verLlamadas')
     ->name('calls') ;
 
 Route::get('/calls/create', [CallsController::class, 'create'])
+    ->middleware('can:registrarLlamada')
     ->name('calls.create') ;
 
 Route::post('/calls/register', [CallsController::class, 'store'])
+    ->middleware('can:registrarLlamada')
     ->name('calls.store') ;
 
 Route::get('/calls/show/{id}', [CallsController::class, 'show'])
+    ->middleware('can:verLlamadas')
     ->name('calls.show') ;
 
 Route::get('/calls/edit/{id}', [CallsController::class, 'edit'])
+    ->middleware('can:editarLlamada')
     ->name('calls.edit');
 
 Route::post('/calls/update/{id}', [CallsController::class, 'update'])
+    ->middleware('can:editarLlamada')
     ->name('calls.update');
+
+Route::post('/calls/delete/{id}', [CallsController::class, 'destroy'])
+    ->middleware('can:eliminarLlamada')
+    ->name('calls.destroy');
+
+Route::post('/calls/service/{id}', [CallsController::class, 'service'])
+    ->middleware('can:llamadasServicio')
+    ->name('calls.service');
 
